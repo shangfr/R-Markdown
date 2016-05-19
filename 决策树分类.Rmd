@@ -1,0 +1,27 @@
+---
+title: "决策树-分类"
+author: "shangfr"
+date: "2015年10月30日"
+output: html_document
+---
+###本文旨在演示r语言rpart包的决策树分类用法，以及利用rpart.plot对结果进行可视化
+>**决策树**（分类树）是一种十分常用的分类方法。他是一种监管学习，所谓监管学习就是给定一堆样本，每个样本都有一组属性和一个类别，这些类别是事先确定的，那么通过学习得到一个分类器，这个分类器能够对新出现的对象给出正确的分类。这样的机器学习就被称之为监督学习。[详细介绍](http://baike.baidu.com/link?url=QCq7hmWFZs466cD-K0aXntOPbvmwvSIJ4Ai3i5pd3LrDM3Vq0Kcjs-IIXfTm_diSqIOC29PR6K16JsCcY2Ko5q)
+
+
+```{r}
+library(rpart)
+library(rpart.plot)
+data =read.csv(file.choose(),head=F)
+```    
+>data数据下载地址参见[关联规则-R语言实现](http://www.cnblogs.com/shangfr/p/4921504.html)一文。
+
+```{r}
+reg<-rpart(V1~.,data) #分类结果可视化 
+rpart.plot(reg, type=4, extra=1,
+           shadow.col="gray", box.col="green",  
+           border.col="blue", split.col="red",  
+           split.cex=1.2, main="决策树")
+```
+
+####可以看出，蘑菇数据更适合通过决策树算法进行分类处理，分类规则评判蘑菇有毒与否清晰明了。
+
