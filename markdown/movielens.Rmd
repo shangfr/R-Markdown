@@ -1,0 +1,38 @@
+---
+title: "MovieLens数据挖掘与分析"
+author: "shangfr"
+date: "2015年10月30日"
+output: html_document
+---
+
+##数据来源
+本文选用明尼苏达大学GroupLens研究组提供的[MovieLens数据集](http://movielens.org)作为实验数据。通过对MovieLens数据集的整理、分析、描述，验证了大数据时代用户行为频率数据呈现出长尾分布的本质。发现长尾分布是导致数据结构高度稀疏化的主要原因，并采用热图形式直观地展示了这种稀疏化的数据结构。
+
+>GroupLens 研究组采集了一组从1995年1月至2015年4月由MovieLens用户提供的电影评分数据。数据包括用户对电影的评分、电影风格类型以及用户评论电影的关键词。全数据集包含23万用户对2.7万部电影的评价信息，共2100万个评分数据。
+GroupLens Research has collected and made available rating data sets from the  [MovieLens web site](http://movielens.org). The data sets were collected over various periods of time, depending on the size of the set. 
+
+##数据的描述性分析与处理
+1. 评分特征
++ 评分文档按列‖user id | movie id | rating | timestamp‖一一对应地列出了每个用户ID对电影ID的评分，并按世界标准时间标注了评分日期；其中，评分采用五分制（允许半分），评分统计特征，详见图一。
+
+
+尽管不同用户采取的评分标准不一样，但可以看出，绝大多数电影还是受到了3-4分的好评。为了更好地构建模型，我们还对数据做了如下的初步分析。
+2. 用户行为特征
++ 23万用户对2.7万部电影共进行了2100万评分，分别计算每部电影被评价过的用户总数和每位用户评价过的电影总数，并从高到低排列，统计特征见表1，分布图形见表2。
+
+表1、用户行为特征 
+
+|       | Min |  1st  Qu 	| Median     | Mean   | 3rd Qu | 	Max |  
+| ----------| --- | ---------- | ---------- | ------ | ------ |------|             
+| 电影被评数 |	1  |   3        |    	18     | 	786.6 |   208  |72690 |            
+| 用户评价数 |	1  |  15        | 	29       | 	91.9  |  89    | 9254 |  
+
+
+
+You can also embed plots, for example:
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
